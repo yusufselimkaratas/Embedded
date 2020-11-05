@@ -14,14 +14,24 @@
  *
  * <Add Extended Description Here>
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author YusufSelimKARATAS
+ * @date 05.11.20
  *
  */
 #ifndef __STATS_H__
 #define __STATS_H__
 
 /* Add Your Declarations and Function Comments here */ 
+
+unsigned char find_minimum(unsigned int len_of_data,unsigned char *data );
+unsigned char find_maximum(unsigned int len_of_data,unsigned char *data );
+unsigned char find_mean (unsigned int len_of_data,unsigned char *data);
+unsigned char find_median(unsigned int len_of_data,unsigned char *data);
+void print_array(unsigned int len_of_data,unsigned char *data);
+void print_statistics(unsigned char *data);
+unsigned char *sort_array(unsigned char *data);
+
+
 
 /**
  * @brief <Add Brief Description of Function Here>
