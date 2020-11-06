@@ -9,10 +9,12 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c
+ * @brief Includes statistical functions for an array.
  *
- * <Add Extended Description Here>
+ * Includes some statistical functions(mimimum, maximum, median ,mean),
+ * sorting function and printing functions for one dimensional unsigned char
+ * array.
  *
  * @author Yusuf Selim KARATAŞ
  * @date 5.11.20
