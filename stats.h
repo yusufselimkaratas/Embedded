@@ -28,8 +28,8 @@ unsigned char find_maximum(unsigned int len_of_data,unsigned char *data );
 unsigned char find_mean (unsigned int len_of_data,unsigned char *data);
 unsigned char find_median(unsigned int len_of_data,unsigned char *data);
 void print_array(unsigned int len_of_data,unsigned char *data);
-void print_statistics(unsigned char *data);
-unsigned char *sort_array(unsigned char *data);
+void print_statistics(unsigned int len_of_data,unsigned char *data);
+unsigned char *sort_array(unsigned int len_of_data,unsigned char *data);
 
 
 

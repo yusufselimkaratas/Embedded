@@ -29,8 +29,8 @@ unsigned char find_maximum(unsigned int len_of_data,unsigned char *data );
 unsigned char find_mean (unsigned int len_of_data,unsigned char *data);
 unsigned char find_median(unsigned int len_of_data,unsigned char *data);
 void print_array(unsigned int len_of_data,unsigned char *data);
-void print_statistics(unsigned char *data);
-unsigned char *sort_array(unsigned char *data);
+void print_statistics(unsigned int len_of_data,unsigned char *data);
+unsigned char *sort_array(unsigned int len_of_data,unsigned char *data);
 
 /* Size of the Data Set */
 #define SIZE (40)
@@ -45,8 +45,9 @@ void main() {
 
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-  printf("%d\n",find_minimum(SIZE,test));
-  printf("%d\n",find_maximum(SIZE,test));
+ 	print_statistics(SIZE,test);
+
+
 
 }
 
@@ -73,6 +74,80 @@ unsigned char find_maximum(unsigned int len_of_data,unsigned char *data ) {
 	}
 	return maximum;
 }
+
+unsigned char find_mean(unsigned int len_of_data,unsigned char *data ) {
+	int sayac=0;
+	int total=0;
+
+	for ( sayac=0;sayac<len_of_data;sayac++){
+		total = total+ data[sayac];
+	}
+
+	return (total/len_of_data);
+	
+
+}
+
+unsigned char *sort_array(unsigned int len_of_data,unsigned char *data){
+
+	int sayac=0;
+	int sayac2=0;
+
+	for (sayac=0; sayac<len_of_data; sayac ++){
+		for (sayac2=0; sayac2< len_of_data-1; sayac2++){
+			if(data[sayac2]<data[sayac2+1]){
+				int temp= data[sayac2];
+				data[sayac2] = data[sayac2+1];
+				data[sayac2+1] = temp;
+			}
+		}
+
+	}
+	return data;
+
+
+}
+
+void print_array(unsigned int len_of_data,unsigned char *data){
+	int sayac=0;
+
+	for ( sayac=0; sayac<len_of_data; sayac++){
+		printf("%d-",data[sayac] );
+	}
+	printf("\n");
+}
+
+unsigned char find_median(unsigned int len_of_data,unsigned char *data){
+	unsigned char *sorted = sort_array(len_of_data,data);
+	int middle_indice;
+	int median;
+	if (len_of_data%2==1){
+		middle_indice = ((len_of_data-1)/2);
+		median = sorted[middle_indice];
+	}
+	else{
+		middle_indice =(len_of_data/2)-1;
+		median = (sorted[middle_indice]+sorted[middle_indice+1])/2;
+	}
+
+	return median;
+}
+
+void print_statistics(unsigned int len_of_data,unsigned char *data){
+	printf("ARRAY :");
+	print_array(len_of_data,data);
+	printf("Minimum Number in Array: %d\n",find_minimum(len_of_data,data));
+ 	printf("Maximum Number in Array: %d\n",find_maximum(len_of_data,data));
+  	printf("Mean Number of Array: %d\n",find_mean(len_of_data,data));
+  	printf("Median Number in Array: %d\n",find_median(len_of_data,data));
+  	unsigned char *test2=sort_array(len_of_data,data);
+  	printf("SORTED ARRAY IN DESCENDING WAY:\n");
+  	print_array(len_of_data,test2);
+  	
+}
+
+
+
 
 
 		
