@@ -47,11 +47,18 @@ CFLAGS =
 CPPFLAGs = 
 
 
-TARGET = C1M2
+TARGET = c1m2
+OBJS = $(SOURCES:.c=.o)
+DFILES = $(SOURCES:.c=.d)
 
 
 #SIZE of the out file
 .$(TARGET).out: $(TARGET).out
+
+.PHONY: clean
+
+clean: 
+	rm -f $(OBJS) $(DFILES) $(TARGET).map $(TARGET).out 
 	
 	 
 
