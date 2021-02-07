@@ -11,14 +11,14 @@
 
 #------------------------------------------------------------------------------
 # <Put a Description Here>
-#
+# THIS IS A COURSERA PROJECT OF YUSUFSELIMKARATAS
 # Use: make [TARGET] [PLATFORM-OVERRIDES]
 #
 # Build Targets:
-#      <Put a description of the supported targets here>
+#      HOST or MSP432 can be used for PLATFORM option.
 #
 # Platform Overrides:
-#      <Put a description of the supported Overrides here
+#      NO OVERRIDE FOR NOW
 #
 #------------------------------------------------------------------------------
 include sources.mk
@@ -31,8 +31,6 @@ include sources.mk
 
 GFLAGS = -Wall -Werror -g -O0 -std=c99 -D$(PLATFORM)
 CPPFLAGs = -E
-
-
 TARGET = c1m2
 
 
