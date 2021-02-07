@@ -47,6 +47,8 @@ ifeq ($(PLATFORM), MSP432)
 	LD = arm-none-eabi-ld
 	CFLAGS =-mcpu=$(CPU) -mthumb -march=$(ARCH) -mfloat-abi=$(FLOAT) -mfpu=$(FPU) --specs=$(SPECS) $(GFLAGS)
 	LDFLAGS = -Wl,-Map=$(TARGET).map -T $(LINKER_FILE)
+	OBJDUMP = arm-none-eabi-objdump
+	SIZE = arm-none-eabi-size
 	
 	
 else
@@ -59,7 +61,8 @@ else
 	LD = ld
 	CFLAGS = $(GFLAGS)
 	LDFLAGS = -Wl,-Map=$(TARGET).map
-	
+	OBJDUMP = objdump
+	SIZE = size	
 
 endif
 
@@ -73,8 +76,10 @@ ASMFILES = $(SOURCES:.c=.asm)
 IFILES = $(SOURCES:.c=.i)
 
 
-main.asm:
-	$(CC) $(INCLUDES) -
+$(TARGET).asm: $(TARGET).out
+	$(OBJDUMP) -d $(TARGET).out >> $@
+	$(SIZE) -Atd $(TARGET).out
+	$(SIZE) $(TARGET).out
 
 
 %.o : %.c
@@ -89,8 +94,7 @@ main.asm:
 %.d : %.c
 	$(CC) $(INCLUDES) -M $< $(CFLAGS) -o $@
 
-#SIZE of the out file
-.$(TARGET).out: $(TARGET).out
+
 
 
 
@@ -100,11 +104,11 @@ clean:
 	
 .PHONY: compile-all
 compile-all:
-	$(CC) 
+	$(CC) $(INCLUDES) $(OBJS) -c $(CFLAGS) -o $(TARGET).o
 	
 
 .PHONY: build
-build: $(TARGET).out
+build: $(TARGET).out $(TARGET).asm
 	$(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) -o $@
 
 $(TARGET).out: $(OBJS)
