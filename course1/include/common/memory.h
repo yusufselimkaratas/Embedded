@@ -90,4 +90,100 @@ void set_all(char * ptr, char value, unsigned int size);
  */
 void clear_all(char * ptr, unsigned int size);
 
+/**
+ * @brief Cuts related data to another adress.
+ *
+ * Takes related data to a temp and deletes old ones, and allocates new data to new address and deletes temp.  
+ *
+ * @param src Data Source Address
+ * @param dst Data Destination Address
+ * @param length Size of Data 
+ *
+ * @return uint8_t 
+ */
+
+
+uint8_t* my_memmove(uint8_t* src, uint8_t* dst, size_t lenght);
+
+/**
+ * @brief Copies related data to another adress.
+ *
+ * Takes related data to a temp and allocates new data to new address and deletes temp.  
+ *
+ * @param src Data Source Address
+ * @param dst Data Destination Address
+ * @param length Size of Data 
+ *
+ * @return uint8_t 
+ */
+
+
+uint8_t* memcopy( uint8_t* src, uint8_t* dst, size_t lenght);
+
+/**
+ * @brief Assign related data to related addresses.
+ *
+ * Takes related data and copies to related addresses.  
+ *
+ * @param src Data Destination Address
+ * @param value Related Data
+ * @param length Size of Data 
+ *
+ * @return uint8_t 
+ */
+
+
+uint8_t* memset( uint8_t* src, size_t lenght, uint8_t value);
+
+/**
+ * @brief Assign 0 to related addresses.
+ *
+ * copies 0 to related addresses.  
+ *
+ * @param src Data Destination Address
+ * @param length Size of Data 
+ *
+ * @return uint8_t 
+ */
+
+uint8_t* memzero( uint8_t* src, size_t lenght);
+
+/**
+ * @brief Reverses data located in an address.
+ *
+ * Takes all data to a temp address and erases old ones. Then relocates from temp in a reverse order.  
+ *
+ * @param src Data Destination Address
+ * @param length Size of Data 
+ *
+ * @return uint8_t 
+ */
+
+uint8_t* my_reverse( uint8_t* src, size_t lenght);
+/**
+ * @brief Reserves location in memory.
+ *
+ * Reserves location in memory. 
+ *
+ * @param length Size of Data 
+ *
+ * @return uint32_t 
+ */
+
+
+int32_t* reserve_words(size_t length);
+
+/**
+ * @brief Deletes related location.
+ *
+ * Deletes all bytes in related location. 
+ *
+ * @param src Related location
+ *
+ * @return void 
+ */
+
+void free_words(int32_t* src);
+
+
 #endif /* __MEMORY_H__ */
