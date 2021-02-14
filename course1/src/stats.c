@@ -111,12 +111,15 @@ unsigned char *sort_array(unsigned int len_of_data,unsigned char *data){
 }
 
 void print_array(unsigned int len_of_data,unsigned char *data){
+	
+	#ifdef VERBOSE
 	int sayac=0;
 
 	for ( sayac=0; sayac<len_of_data; sayac++){
 		printf("%d-",data[sayac] );
 	}
 	printf("\n");
+	#endif
 }
 
 unsigned char find_median(unsigned int len_of_data,unsigned char *data){
